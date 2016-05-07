@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WIMF_REST_Service.WIMF_REST_service_imp" CodeBehind="WIMF_REST_service_imp.svc.cs" %>
