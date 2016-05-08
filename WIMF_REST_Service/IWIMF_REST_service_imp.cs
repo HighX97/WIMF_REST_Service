@@ -19,39 +19,58 @@ namespace WIMF_REST_Service
 
         //WIMF
         //WIMF  /utilisateur
-        [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "utilisateur/{utilisateurId}", ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
-        Utilisateur GetUtilisateur(string utilisateurId);
+
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "utilisateur/all", ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
+        [WebInvoke(Method = "GET",
+        UriTemplate = "utilisateur/all",
+        ResponseFormat = WebMessageFormat.Xml,
+        BodyStyle = WebMessageBodyStyle.Bare)]
         List<Utilisateur> GetAllUtilisateur();
 
         [OperationContract]
-        [WebInvoke(Method = "PUT", UriTemplate = "utilisateur/{utilisateurId}", RequestFormat = WebMessageFormat.Xml)]
-        void UpdateUtilisateur(string utilisateurId, Utilisateur updatedUtilisateur);
-
-        [OperationContract]
-        [WebInvoke(Method = "PUT", UriTemplate = "utilisateur/amis/{utilisateurId}", RequestFormat = WebMessageFormat.Xml)]
+        [WebInvoke(Method = "GET",
+        UriTemplate = "utilisateur/amis/{utilisateurId}",
+        RequestFormat = WebMessageFormat.Xml)]
         List<Ami> GetUser_amis(string utilisateurId);
 
         [OperationContract]
-        [WebInvoke(Method = "PUT", UriTemplate = "utilisateur/messages/{utilisateurId}", ResponseFormat = WebMessageFormat.Xml)]
+        [WebInvoke(Method = "GET",
+        UriTemplate = "utilisateur/messages/{utilisateurId}",
+        ResponseFormat = WebMessageFormat.Xml)]
         List<Message> GetUser_messages(string utilisateurId);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "utilisateur", ResponseFormat = WebMessageFormat.Xml,
+        [WebInvoke(Method = "GET",
+        UriTemplate = "utilisateur/{utilisateurId}",
+        ResponseFormat = WebMessageFormat.Xml,
+        BodyStyle = WebMessageBodyStyle.Bare)]
+        Utilisateur GetUtilisateur(string utilisateurId);
+
+        [OperationContract]
+        [WebInvoke(Method = "PUT",
+        UriTemplate = "utilisateur/{utilisateurId}",
+        RequestFormat = WebMessageFormat.Xml)]
+        Utilisateur UpdateUtilisateur(string utilisateurId,
+        Utilisateur updatedUtilisateur);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+        UriTemplate = "utilisateur",
+        ResponseFormat = WebMessageFormat.Xml,
         RequestFormat = WebMessageFormat.Xml)]
         void CreateUtilisateur(Utilisateur newUtilisateur);
 
         [OperationContract]
-        [WebInvoke(Method = "DELETE", UriTemplate = "utilisateur/{utilisateurId}")]
-        void DeleteUtilisateur(string utilisateurId);
+        [WebInvoke(Method = "DELETE",
+        UriTemplate = "utilisateur/{utilisateur_id}")]
+        void DeleteUtilisateur(string utilisateur_id);
 
         //WIMF  /messages
-      
+
         [OperationContract]
-        [WebGet(UriTemplate = "messages/{messageId}", ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
+        [WebGet(UriTemplate = "messages/{messageId}",
+        ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
         Message GetMessage(string messageId);
 
         [OperationContract]

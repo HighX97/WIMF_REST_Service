@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Text.RegularExpressions;
 //Add MySql Library
 
 namespace WIMF_ClassLibrary
@@ -101,25 +102,23 @@ namespace WIMF_ClassLibrary
         //Update statement
         public bool Update(string table, string set, string where)
         {
-            string query = "UPDATE " + table + " SET " + set + "' WHERE " + where;
+            string query = "UPDATE " + table + " SET " + set + " WHERE " + where;
             return ExecuteQuery(query);
         }
 
         public bool Update(string table, List<String> columns_values, string where)
         {
             string columns_values_string = "";
-            columns_values_string += "(";
             int i = 1;
             foreach (string s in columns_values)
             {
                 columns_values_string += s;
                 if (i < columns_values.Count)
                 {
-                    columns_values_string += ",";
+                    columns_values_string += ", ";
                 }
                 i++;
             }
-            columns_values_string += ")";
            return this.Update(table, columns_values_string, where);
         }
 
@@ -200,9 +199,10 @@ namespace WIMF_ClassLibrary
                     Dictionary<string, string> line_resultat = new Dictionary<string, string>();
                     foreach (string s in select)
                     {
-                        object temp = dataReader[s];
-                        string value = dataReader[s].ToString();
-                        line_resultat.Add(s, value);
+                        string  new_s = Regex.Replace(s, "^[A-Z].", "");
+                        object temp = dataReader[new_s];
+                        string value = dataReader[new_s].ToString();
+                        line_resultat.Add(new_s, value);
                     }
                     resultat.Add(line_resultat);
                 }

@@ -374,51 +374,30 @@ namespace WIMF_REST_Service
             }
         }
 
-        void IWIMF_REST_service_imp.CreateUtilisateur(Utilisateur newUtilisateur)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IWIMF_REST_service_imp.UpdateUtilisateur(string utilisateurId, Utilisateur updatedUtilisateur)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IWIMF_REST_service_imp.DeleteUtilisateur(string utilisateurId)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
         void IWIMF_REST_service_imp.CreateMessage(Message newMessage)
         {
             throw new NotImplementedException();
         }
 
-        void IWIMF_REST_service_imp.UpdateMessage(string messageId, Message updatedMessage)
-        {
-            throw new NotImplementedException();
-        }
 
         void IWIMF_REST_service_imp.DeleteMessage(string messageId)
         {
             throw new NotImplementedException();
         }
 
-        List<Message> IWIMF_REST_service_imp.GetUser_messages(string idUser)
+        List<Message> IWIMF_REST_service_imp.GetUser_messages(string utilisateurId)
         {
-            int idUserInt;
+            int utilisateurIdInt;
             Message_db db_msg = new Message_db();
             List<Message> user_messages = null;
 
-            if (!int.TryParse(idUser, out idUserInt)) //si idUser n'est pas un int
+            if (!int.TryParse(utilisateurId, out utilisateurIdInt)) //si idUser n'est pas un int
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 return null;
             }
 
-            user_messages = db_msg.getUser_messages(idUserInt);
+            user_messages = db_msg.getUser_messages(utilisateurIdInt);
 
             if (user_messages == null)
             {
@@ -432,10 +411,152 @@ namespace WIMF_REST_Service
 
         List<Utilisateur> IWIMF_REST_service_imp.GetAllUtilisateur()
         {
-            throw new NotImplementedException();
+            Utilisateur_db db_u = new Utilisateur_db();
+            List<Utilisateur> utilisateurs = null;
+
+            utilisateurs = db_u.getUtilisateur_all();
+
+            if (utilisateurs == null)
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
+                return null;
+            }
+
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.OK;
+            return utilisateurs;
         }
 
         List<Ami> IWIMF_REST_service_imp.GetUser_amis(string utilisateurId)
+        {
+            int iutilisateurIdInt;
+            Ami_db db_ami = new Ami_db();
+            List<Ami> amis = null;
+
+            if (!int.TryParse(utilisateurId, out iutilisateurIdInt)) //si utilisateurId n'est pas un int
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                return null;
+            }
+
+            amis = db_ami.getUtilisateur_amis(iutilisateurIdInt);
+
+            if (amis == null)
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
+                return null;
+            }
+
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.OK;
+            return amis;
+        }
+
+
+        Utilisateur IWIMF_REST_service_imp.UpdateUtilisateur(string utilisateur_id, Utilisateur updatedUtilisateur)
+        {
+            int utilisateur_id_int;
+            Utilisateur utilisateur = null;
+            //on parse l'identifiant envoyé en entier
+            if (int.TryParse(utilisateur_id, out utilisateur_id_int))
+            {
+                Utilisateur_db db_u = new Utilisateur_db();
+                utilisateur = db_u.getUtilisateur(utilisateur_id_int);
+                //s'il existe on le modifie et on renvoie le statut Created
+                if (utilisateur != null)
+                {
+                    string where = "idU = " + utilisateur_id;
+                    List<string> columns_values = new List<string>();
+                    if (updatedUtilisateur.Nom != null)
+                    {
+                        columns_values.Add("nom = '" + updatedUtilisateur.Nom+"'");
+                    }
+                    if (updatedUtilisateur.Tel != null)
+                    {
+                        columns_values.Add("tel = '" + updatedUtilisateur.Tel + "'");
+                    }
+                    if (updatedUtilisateur.Gps != null || updatedUtilisateur.Gps.Length > 0)
+                    {
+                        columns_values.Add("gps ='" + updatedUtilisateur.Gps + "'");
+                    }
+                    if (updatedUtilisateur.Password != null)
+                    {
+                        columns_values.Add("password = '" + updatedUtilisateur.Password + "'");
+                    }
+                    if (updatedUtilisateur.DateMaj != null)
+                    {
+                        columns_values.Add("dateMaj = CURRENT_TIMESTAMP");
+                    }
+                    db_u.Update(columns_values, where);
+                    WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.OK;
+                    utilisateur =  db_u.getUtilisateur(utilisateur_id_int);
+                }
+                else //sinon on envoie une erreur
+                {
+                    WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
+                }
+            }
+            else  //si l'identifiant n'est pas un entier
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+            }
+            return utilisateur;
+        }
+
+        void IWIMF_REST_service_imp.CreateUtilisateur(Utilisateur newUtilisateur)
+        {
+            if (newUtilisateur != null)
+            {
+                Utilisateur_db db_u = new Utilisateur_db();
+                List<string> columns = new List<string>();
+                columns.Add("nom");
+                columns.Add("password");
+                columns.Add("tel");
+                columns.Add("dateMaj");
+
+                List<string> values = new List<string>();
+                values.Add("'"+newUtilisateur.Nom + "'");
+                values.Add("'" + (newUtilisateur.Password + "'"));
+                values.Add(("'" + newUtilisateur.Tel + "'"));
+                values.Add("CURRENT_TIMESTAMP");
+
+                db_u.Insert(columns, values);
+            }
+            else //erreur dans la requête
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+            }
+        }
+
+
+
+
+        void IWIMF_REST_service_imp.DeleteUtilisateur(string utilisateur_id)
+        {
+            int utilisateur_id_int;
+            Utilisateur utilisateur = null;
+            //on parse l'identifiant envoyé en entier
+            if (int.TryParse(utilisateur_id, out utilisateur_id_int))
+            {
+                Utilisateur_db db_u = new Utilisateur_db();
+                utilisateur = db_u.getUtilisateur(utilisateur_id_int);
+                //s'il existe on le modifie et on renvoie le statut Created
+                if (utilisateur != null)
+                {
+                    string where = "idU = " + utilisateur_id;
+                    db_u.Delete(where);
+                    WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.OK;
+                }
+                else //sinon on envoie une erreur
+                {
+                    WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
+                }
+            }
+            else  //si l'identifiant n'est pas un entier
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+            }
+        }
+
+        void IWIMF_REST_service_imp.UpdateMessage(string messageId, Message updatedMessage)
         {
             throw new NotImplementedException();
         }
