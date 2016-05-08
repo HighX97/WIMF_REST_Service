@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using System.Data;
 //Add MySql Library
 
 namespace WIMF_ClassLibrary
@@ -25,8 +27,10 @@ namespace WIMF_ClassLibrary
             server = "localhost";
             database = "db_wimf";
             uid = "wimf_db_admin";
-            password = "password";   
+            password = "password";
         }
+
+
 
         //open connection to database
         protected bool OpenConnection()
@@ -47,7 +51,7 @@ namespace WIMF_ClassLibrary
                 connection.Close();
                 return true;
             }
-            catch (MySqlException ex)
+            catch (MySqlException)
             {
                 return false;
             }
@@ -60,11 +64,63 @@ namespace WIMF_ClassLibrary
             return ExecuteQuery(query);
         }
 
+        public bool Insert(string table,List<String> columns, List<String> values)
+        {
+            string columns_string="";
+            if (columns.Count >0 )
+            {
+                columns_string += "(";
+                int i = 1;
+                foreach (string column in columns)
+                {
+                    columns_string += column;
+                    if (i < columns.Count)
+                    {
+                        columns_string +=",";
+                    }
+                    i++;
+                }
+                columns_string += ")";
+            }
+            string values_string="";
+            values_string += "(";
+            int j = 1;
+            foreach (string value in values)
+            {
+                values_string += value;
+                if (j < values.Count)
+                {
+                    values_string += ",";
+                }
+                j++;
+            }
+            values_string += ")";
+            return this.Insert(table, columns_string, values_string);
+        }
+
         //Update statement
         public bool Update(string table, string set, string where)
         {
             string query = "UPDATE " + table + " SET " + set + "' WHERE " + where;
             return ExecuteQuery(query);
+        }
+
+        public bool Update(string table, List<String> columns_values, string where)
+        {
+            string columns_values_string = "";
+            columns_values_string += "(";
+            int i = 1;
+            foreach (string s in columns_values)
+            {
+                columns_values_string += s;
+                if (i < columns_values.Count)
+                {
+                    columns_values_string += ",";
+                }
+                i++;
+            }
+            columns_values_string += ")";
+           return this.Update(table, columns_values_string, where);
         }
 
         //Delete statement
@@ -112,15 +168,23 @@ namespace WIMF_ClassLibrary
                 }
                 i++;
             }
-            string query = "select " + select_string
-                + " from " + from
-                + " where " + where
-                + " order by " + order_by
-                + " limit "+ limit1 + ","+ limit2;
+            string query = "select " + select_string;
+            query += " from " + from;
+            if (where != null)
+            {
+                query += " where " + where;
+            }
+            if (order_by != null)
+            {
+                query += " order by " + order_by;
+            }
+            query += " limit " + limit1 + "," + limit2;
+
+
+
 
             //Create a list to store the result
             List<Dictionary<string, string>> resultat = new List<Dictionary<string, string>>();
-
             //Open connection
             bool con = this.OpenConnection();
             if (con == true)
@@ -136,12 +200,13 @@ namespace WIMF_ClassLibrary
                     Dictionary<string, string> line_resultat = new Dictionary<string, string>();
                     foreach (string s in select)
                     {
+                        object temp = dataReader[s];
                         string value = dataReader[s].ToString();
-                        line_resultat.Add(s, dataReader[s] + "");
+                        line_resultat.Add(s, value);
                     }
                     resultat.Add(line_resultat);
                 }
-                
+
 
                 //close Data Reader
                 dataReader.Close();
@@ -157,6 +222,8 @@ namespace WIMF_ClassLibrary
                 return resultat;
             }
         }
+
+
 
         /*
         //Count statement

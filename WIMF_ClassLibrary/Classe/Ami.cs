@@ -9,6 +9,12 @@ namespace WIMF_ClassLibrary
     {
         //Champs
         //object
+        /* Base
+        protected int idU;
+        protected string nom;
+        protected string tel;
+        protected string gps;
+        */
         protected int idPos;
         protected int etat;
 

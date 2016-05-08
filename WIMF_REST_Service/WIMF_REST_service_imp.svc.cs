@@ -191,7 +191,7 @@ namespace WIMF_REST_Service
                     WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                     return null;
                 }
-    
+
                 film = ListeFilms.FirstOrDefault(f => f.Id == filmIdInt);
 
                 if (film == null) //si le film n'existe pas
@@ -202,6 +202,55 @@ namespace WIMF_REST_Service
 
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.OK;
                 return film;
+        }
+
+
+        Message IWIMF_REST_service_imp.GetMessage(string messageId)
+        {
+            int messageIdInt;
+            Message_db db_msg = new Message_db();
+            Message message = null;
+
+            if (!int.TryParse(messageId, out messageIdInt)) //si messageId n'est pas un int
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                return null;
+            }
+
+            message = db_msg.getMessage(messageIdInt);
+
+            if (message == null) //si le message n'existe pas
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
+                return null;
+            }
+
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.OK;
+            return message;
+        }
+
+        Utilisateur IWIMF_REST_service_imp.GetUtilisateur(string utilisateurId)
+        {
+            int utilisateurIdInt;
+            Utilisateur_db db_u = new Utilisateur_db();
+            Utilisateur utilisateur = null;
+
+            if (!int.TryParse(utilisateurId, out utilisateurIdInt)) //si utilisateurId n'est pas un int
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                return null;
+            }
+
+            utilisateur = db_u.getUtilisateur(utilisateurIdInt);
+
+            if (utilisateur == null) //si le utilisateur n'existe pas
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
+                return null;
+            }
+
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.OK;
+            return utilisateur;
         }
 
         void IWIMF_REST_service_imp.CreateFilm(Film newFilm)
@@ -325,11 +374,6 @@ namespace WIMF_REST_Service
             }
         }
 
-        Utilisateur IWIMF_REST_service_imp.GetUtilisateur(string utilisateurId)
-        {
-            throw new NotImplementedException();
-        }
-
         void IWIMF_REST_service_imp.CreateUtilisateur(Utilisateur newUtilisateur)
         {
             throw new NotImplementedException();
@@ -345,10 +389,7 @@ namespace WIMF_REST_Service
             throw new NotImplementedException();
         }
 
-        Message IWIMF_REST_service_imp.GetMessage(string messageId)
-        {
-            throw new NotImplementedException();
-        }
+
 
         void IWIMF_REST_service_imp.CreateMessage(Message newMessage)
         {
@@ -364,8 +405,41 @@ namespace WIMF_REST_Service
         {
             throw new NotImplementedException();
         }
+
+        List<Message> IWIMF_REST_service_imp.GetUser_messages(string idUser)
+        {
+            int idUserInt;
+            Message_db db_msg = new Message_db();
+            List<Message> user_messages = null;
+
+            if (!int.TryParse(idUser, out idUserInt)) //si idUser n'est pas un int
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                return null;
+            }
+
+            user_messages = db_msg.getUser_messages(idUserInt);
+
+            if (user_messages == null)
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
+                return null;
+            }
+
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.OK;
+            return user_messages;
+        }
+
+        List<Utilisateur> IWIMF_REST_service_imp.GetAllUtilisateur()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Ami> IWIMF_REST_service_imp.GetUser_amis(string utilisateurId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
  // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "WIMF_REST_service_imp" à la fois dans le code, le fichier svc et le fichier de configuration.
     // REMARQUE : pour lancer le client test WCF afin de tester ce servicwe, sélectionnez WIMF_REST_service_imp.svc ou WIMF_REST_service_imp.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
-    
