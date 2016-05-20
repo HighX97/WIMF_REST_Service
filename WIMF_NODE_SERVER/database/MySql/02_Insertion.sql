@@ -27,62 +27,62 @@ SELECT * FROM Utilisateur
 
 --Table Amis
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (1,2)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (1,3)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (1,4)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (2,1)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (2,3)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (2,4)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (3,1)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (3,2)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (3,4)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (4,1)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (4,2)
 ;
 INSERT INTO Amis
-(idU1,idU2)
+(idU_snd,idU_rcv)
 VALUES
 (4,3)
 ;
@@ -91,122 +91,122 @@ SELECT * FROM Amis
 
 --Table Message
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",1,2)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",1,3)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",1,4)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",2,1)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",2,3)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",2,4)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",3,1)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",3,2)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",3,4)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",4,1)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",4,2)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",4,3)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",1,2)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",1,3)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",1,4)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",2,1)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",2,3)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",2,4)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",3,1)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",3,2)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",3,4)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",4,1)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",4,2)
 ;
 INSERT INTO Message
-(valeur,idU1,idU2)
+(valeur,idU_snd,idU_rcv)
 VALUES
 ("Message",4,3)
 ;

@@ -1,5 +1,56 @@
-function insert(table, columns, values)
+var abstract_db = function()
 {
+
+  this.mysql_delete= function(table,where)
+  {
+    var query = "DELETE FROM " + table + " ";
+    query += "WHERE " + where;
+    return query;
+  }
+
+  this.mysql_update =function (table,set,where)
+  {
+    var query = "UPDATE " + table + " SET ";
+    var i = 1;
+    for (x in set)
+    {
+      query += set[x]+" ";
+      if (i < set.length)
+      {
+        query += ",";
+      }
+      i++;
+    }
+    query += "WHERE " + where;
+    return query;
+  }
+
+  this.mysql_select = function(select,from,where,orderby)
+  {
+    var query = "SELECT " + select + " FROM ";
+    var i = 1;
+    for (x in from)
+    {
+      query += from[x]+" ";
+      if (i < from.length)
+      {
+        query += ",";
+      }
+      i++;
+    }
+    if(where != "")
+    {
+      query += "WHERE " + where + " ";
+    }
+    if(orderby != "")
+    {
+      query += "ORDER BY " + orderby;
+    }
+    return query;
+  }
+
+  this.mysql_insert = function(table, columns, values)
+  {
     var query = "INSERT INTO " + table + " ";
     var i = 1;
     for (x in columns)
@@ -39,4 +90,7 @@ function insert(table, columns, values)
       i++;
     }
     return query;
+  }
 }
+
+module.exports = new abstract_db();
