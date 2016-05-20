@@ -8,7 +8,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host : 'localhost',
   user : 'root',
-  password : 'password',
+  password : 'aa780cb2a49c562f',
   database :  'db_wimf'
 })
 // ***** Exports
