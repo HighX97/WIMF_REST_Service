@@ -1,0 +1,72 @@
+00_PRESENTATION_ENVIRONNEMENT
+
+OS : Linux Ubuntu 14.04
+
+Arboresence :
+TER_FriendlyTrain/backend
+│  
+├── app
+│   │
+│   ├── controllers
+│   │   |
+│   │   └── *
+│   │
+│   └── models
+│       |
+│       └── *
+│  
+├── node_modules
+│   │
+│   └── *
+│
+└── server
+    │
+    ├── config.js
+    |
+    ├── server_app.js
+    |
+    ├── server_web.js
+    |
+    └── srvMongoDB
+        │
+        └── *
+
+01_INSTALL_ENVIRONNEMENT
+
+Install server :
+sudo apt-get install nodejs
+sudo apt-get install npm
+
+Install server_modules
+cd TER_FriendlyTrain/backend
+sudo rm -r node_modules
+sudo npm install express body-parser ms ee-first unpipe http-errors destroy statuses forwarded ipaddr.js negotiator mime-types media-typer morgan mongoose jsonwebtoken finalhandler serve-static validator mongoose-auto-increment cookie-parser
+
+Install database :
+sudo apt-get install mongodb
+
+
+02_START_ENVIRONNEMENT
+
+Terminal 1
+Start web server
+cd TER_FriendlyTrain/backend
+sudo nodejs server/server_web.js
+
+Terminal 2
+Start mongodb server
+cd TER_FriendlyTrain/backend
+rm -r server/srvMongoDB/
+mkdir server/srvMongoDB
+sudo service mongodb stop
+mongod -dbpath server/srvMongoDB/
+
+Terminal 3
+Start app server
+cd TER_FriendlyTrain/backend
+sudo nodejs server/server_app.js
+
+03_VIEW_ENVIRONNEMENT
+
+Terminal 4
+mongo

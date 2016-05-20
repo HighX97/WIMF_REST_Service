@@ -1,0 +1,13 @@
+Intro to REST : https://www.youtube.com/watch?v=YCcAE2SCQ6k
+
+WINDOWS :
+set PATH=%PATH%;C:\"Program Files"\MySQL\"MySQL Server 5.7"\bin
+mysql -u wimf_db_admin -p
+
+-----
+mysqldump -u wimf_db_admin -p db_wimf > db_wimf.sql
+
+CREATE DATABASE db_wimf;
+use db_wimf;
+source db_wimf.sql
+-----
