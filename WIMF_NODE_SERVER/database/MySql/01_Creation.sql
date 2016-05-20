@@ -1,17 +1,11 @@
---source 01_Creation.sql
--- Création de la base de données
 SHOW DATABASES;
--- Si la base de données 'db_wimf' existe, on l'a supprime pour qu'elle soit totalement neuve.
 DROP DATABASE IF EXISTS db_wimf;
--- Création de la base de données
 CREATE DATABASE db_wimf;
--- Utilise cette base de données
 USE db_wimf;
 SHOW TABLES;
 
 
 
---Table Utilisateur
 
 CREATE TABLE Utilisateur
 (
@@ -27,10 +21,10 @@ CREATE TABLE Utilisateur
   CONSTRAINT uc_UtilisateurTel UNIQUE (tel)
 )
 ;
+
 DESC Utilisateur
 ;
 
---Table Gps_utilisateur
 
 CREATE TABLE Gps_utilisateur
 (
@@ -41,10 +35,10 @@ CREATE TABLE Gps_utilisateur
   CONSTRAINT pk_Gps_utilisateur PRIMARY KEY (idU,gps_lat,gps_long,datetimeCrea)
 )
 ;
+
 DESC Gps_utilisateur
 ;
 
---Table Amis
 
 CREATE TABLE Amis
 (
@@ -60,10 +54,10 @@ CREATE TABLE Amis
   REFERENCES Utilisateur(idU)
 )
 ;
+
 DESC Amis
 ;
 
---Table Message
 
 CREATE TABLE Message
 (
@@ -81,5 +75,8 @@ CREATE TABLE Message
   REFERENCES Utilisateur(idU)
 )
 ;
+
 DESC Message
 ;
+
+source 06_Trigger.sql
