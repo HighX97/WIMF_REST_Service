@@ -7,8 +7,8 @@ var moduleRoutes = express.Router();
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   host : 'localhost',
-  user : 'root',
-  password : 'aa780cb2a49c562f',
+  user : 'jimmy',
+  password : 'ikbal',
   database :  'db_wimf'
 })
 // ***** Exports
