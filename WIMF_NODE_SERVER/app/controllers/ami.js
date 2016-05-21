@@ -36,6 +36,7 @@ moduleRoutes.post('/list', function(req, res)
     //abstract_db.connection.connect();
     abstract_db.connection.query(query, function(err, result)
     {
+      console.log(new Date());
       console.log(err);
       console.log(result);
       if(err)
