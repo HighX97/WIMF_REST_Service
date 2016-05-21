@@ -5,12 +5,10 @@ var config = require(pathServer + 'config');
 var jwt    = require('jsonwebtoken');
 var moduleRoutes = express.Router();
 var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host : 'localhost',
-  user : 'root',
-  password : 'password',
-  database :  'db_wimf'
-})
+//Helpers:
+var commonHelper   = require('../helpers/common');
+var abstract_db = require("../models/abstract_db");
+var message = require("../models/message");
 // ***** Exports
 module.exports = moduleRoutes;
 //Helpers:
@@ -62,7 +60,7 @@ moduleRoutes.post('/new', function(req, res)
   }
 });
 
-moduleRoutes.post('/list_messages', function(req, res)
+moduleRoutes.post('/list', function(req, res)
 {
   var validationResponse = commonHelper.getValidationResponse();
   var HelperValidator = commonHelper.validator;

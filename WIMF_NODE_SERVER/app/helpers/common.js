@@ -70,6 +70,21 @@ var commonHelper = function() {
 	 */
 	this.validator = validator; // var HelperValidator = commonHelper.validator;
 
+	this.result_json = function(err, result, msg)
+	{
+		console.log(err);
+		console.log(result);
+		console.log(msg);
+		if(err)
+		{
+			return { success: false, message: msg+' : action failed', data: err };
+		}
+		else
+		{
+			return { success: true, message: msg+' : action suceeded', data: result };
+		}
+	}
+
 	this.getValidationResponse = function(){
 		return {
 			success : true,
@@ -88,6 +103,7 @@ var commonHelper = function() {
 			}
 		};
 	}
+
 	this.calculateTotalProd = function(Order) {
 		var obj = JSON.parse(Order);
 		var som = 0;

@@ -5,12 +5,10 @@ var config = require(pathServer + 'config');
 var jwt    = require('jsonwebtoken');
 var moduleRoutes = express.Router();
 var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host : 'localhost',
-  user : 'root',
-  password : 'password',
-  database :  'db_wimf'
-})
+//Helpers:
+var commonHelper   = require('../helpers/common');
+var abstract_db = require("../models/abstract_db");
+var gps = require("../models/gps");
 // ***** Exports
 module.exports = moduleRoutes;
 //Helpers:

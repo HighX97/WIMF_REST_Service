@@ -1,10 +1,20 @@
+var mysql = require('mysql');
+
 var abstract_db = function()
 {
+
+  this.connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : 'password',
+    database :  'db_wimf'
+  })
 
   this.mysql_delete= function(table,where)
   {
     var query = "DELETE FROM " + table + " ";
     query += "WHERE " + where;
+    console.log(query);
     return query;
   }
 
@@ -22,6 +32,7 @@ var abstract_db = function()
       i++;
     }
     query += "WHERE " + where;
+    console.log(query);
     return query;
   }
 
@@ -46,6 +57,7 @@ var abstract_db = function()
     {
       query += "ORDER BY " + orderby;
     }
+    console.log(query);
     return query;
   }
 
@@ -89,6 +101,7 @@ var abstract_db = function()
       }
       i++;
     }
+    console.log(query);
     return query;
   }
 }
