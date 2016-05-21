@@ -38,7 +38,7 @@ var ami = function()
   }
 
   this.verify_body_connect = function(req)
-  {
+  { 
     var validationResponse = commonHelper.getValidationResponse();
     var HelperValidator = commonHelper.validator;
     if(! HelperValidator.isAscii( req.body.tel)
