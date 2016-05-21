@@ -5,8 +5,8 @@ var abstract_db = function()
 
   this.connection = mysql.createConnection({
     host : 'localhost',
-    user : 'jimmy',
-    password : 'ikbal',
+    user : 'root',
+    password : 'password',
     database :  'db_wimf'
   })
 

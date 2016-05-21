@@ -14,6 +14,7 @@ module.exports = moduleRoutes;
 //Helpers:
 var commonHelper   = require('../helpers/common');
 var abstract_db = require("../models/abstract_db");
+var table = 'Message'
 //var authenticationHelper   = require('../helpers/authentification');
 
 
@@ -37,13 +38,26 @@ moduleRoutes.post('/new', function(req, res)
       res.json(validationResponse);
   }
   else {
-    var table = 'Message'
     var query = abstract_db.mysql_insert(table,['valeur','tel_snd','tel_rcv'],['"'+req.body.valeur+'"','"'+req.body.tel_snd+'"','"'+req.body.tel_rcv+'"']);
     abstract_db.connection.query(query, function(err, result)
     {
       res.json(commonHelper.result_json(err, result,'New '+table));
     });
   }
+});
+
+moduleRoutes.delete('/delete', function(req, res)
+{
+  if(! message.verify_body_one(req)){
+      res.json(validationResponse);
+  }
+  else {
+    var query = abstract_db.mysql_delete(table,'idMsg = "'+req.body.idMsg+'"');
+    abstract_db.connection.query(query, function(err, result)
+    {
+        res.json(commonHelper.result_json(err, result,'Delete '+table));
+    });
+}
 });
 
 moduleRoutes.post('/list', function(req, res)

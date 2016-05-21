@@ -69,10 +69,10 @@ CREATE TABLE Message
   datetimeCrea TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
   datetimeMaj TIMESTAMP,
   CONSTRAINT pk_Message PRIMARY KEY (idMsg),
-  CONSTRAINT fk_MessageU1 FOREIGN KEY (idU_snd)
-  REFERENCES Utilisateur(idU),
-  CONSTRAINT fk_MessageU2 FOREIGN KEY (idU_rcv)
-  REFERENCES Utilisateur(idU)
+  CONSTRAINT fk_MessageU1 FOREIGN KEY (tel_snd)
+  REFERENCES Utilisateur(tel),
+  CONSTRAINT fk_MessageU2 FOREIGN KEY (tel_rcv)
+  REFERENCES Utilisateur(tel)
 )
 ;
 

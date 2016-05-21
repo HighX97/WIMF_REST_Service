@@ -15,6 +15,26 @@ module.exports = moduleRoutes;
 var commonHelper   = require('../helpers/common');
 var abstract_db = require("../models/abstract_db");
 
+moduleRoutes.post('/new', function(req, res)
+{
+  console.log(req.body.id_snd );
+  console.log(req.body.id_rcv );
+  console.log(req.body.valeur );
+  console.log('---------------------');
+  var validationResponse = commonHelper.getValidationResponse();
+  if(! message.verify_body_new(req)){
+      res.json(validationResponse);
+  }
+  else {
+    var table = 'Message'
+    var query = abstract_db.mysql_insert(table,['valeur','tel_snd','tel_rcv'],['"'+req.body.valeur+'"','"'+req.body.tel_snd+'"','"'+req.body.tel_rcv+'"']);
+    abstract_db.connection.query(query, function(err, result)
+    {
+      res.json(commonHelper.result_json(err, result,'New '+table));
+    });
+  }
+});
+
 moduleRoutes.post('/list', function(req, res)
 {
   var validationResponse = commonHelper.getValidationResponse();

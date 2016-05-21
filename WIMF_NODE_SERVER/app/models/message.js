@@ -31,27 +31,13 @@ var message = function()
   {
     var validationResponse = commonHelper.getValidationResponse();
     var HelperValidator = commonHelper.validator;
-    if(! HelperValidator.isAscii( req.body.tel)
+    if(! HelperValidator.isNumeric( req.body.idMsg)
         && req.body.tel != "" ){
-        validationResponse.addError("Invalid tel: " + req.body.tel);
+        validationResponse.addError("Invalid idMsg: " + req.body.idMsg);
     }
     return validationResponse.success;
   }
-
-  this.verify_body_connect = function(req)
-  {
-    var validationResponse = commonHelper.getValidationResponse();
-    var HelperValidator = commonHelper.validator;
-    if(! HelperValidator.isAscii( req.body.tel)
-        && req.body.tel != "" ){
-        validationResponse.addError("Invalid tel: " + req.body.tel);
-    }
-    if(! (HelperValidator.isAlphanumeric( req.body.password)
-        && HelperValidator.isLength(req.body.password, {min: 5, max: 10}) ) ){
-        validationResponse.addError("Le password doit être une chaine de characters Alphanumerique entre (5 - 10) : " + req.body.password);
-    }
-    return validationResponse.success;
-  }
+  
 }
 
 module.exports = new message();
