@@ -28,13 +28,13 @@ moduleRoutes.post('/list', function(req, res)
       res.json(validationResponse);
   }
   else {
-    //connection.connect();
-    var query = abstract_db.select('DISTINCT(Ufind.idU),Ufind.nom,Ufind.tel,A.datetimeCrea,A.etat'
+    //abstract_db.connection.connect();
+    var query = abstract_db.mysql_select('DISTINCT(Ufind.idU),Ufind.nom,Ufind.tel,A.datetimeCrea,A.etat'
     ,['Amis A','Utilisateur Ufind','Utilisateur Usearch']
     ,'Usearch.tel = "'+req.body.tel+'" and (A.idU_snd = Usearch.idU and Ufind.idu = A.idU_rcv ) or (A.idU_rcv = Usearch.idU and Ufind.idu = A.idU_snd )','A.datetimeCrea ASC');
     console.log(query);
-    //connection.connect();
-    connection.query(query, function(err, result)
+    //abstract_db.connection.connect();
+    abstract_db.connection.query(query, function(err, result)
     {
       console.log(err);
       console.log(result);

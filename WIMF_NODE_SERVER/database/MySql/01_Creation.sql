@@ -58,13 +58,13 @@ CREATE TABLE Amis
 DESC Amis
 ;
 
-
+DROP TABLE Message;
 CREATE TABLE Message
 (
   idMsg int AUTO_INCREMENT,
   valeur VARCHAR(256),
-  idU_snd int,
-  idU_rcv int,
+  tel_snd VARCHAR(20),
+  tel_rcv VARCHAR(20),
   etat int DEFAULT 0,
   datetimeCrea TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
   datetimeMaj TIMESTAMP,

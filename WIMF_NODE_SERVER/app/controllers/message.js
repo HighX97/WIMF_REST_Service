@@ -28,34 +28,20 @@ moduleRoutes.get('/', function(req, res) {
 
 moduleRoutes.post('/new', function(req, res)
 {
+  console.log(req.body.tel_snd );
+  console.log(req.body.tel_rcv );
+  console.log(req.body.valeur );
+  console.log('---------------------');
   var validationResponse = commonHelper.getValidationResponse();
-  var HelperValidator = commonHelper.validator;
-  if(! HelperValidator.isAscii( req.body.tel)
-      && req.body.tel != "" ){
-      validationResponse.addError("Invalid tel: " + req.body.tel);
-  }
-
-  if(! validationResponse.success){
+  if(! message.verify_body_new(req)){
       res.json(validationResponse);
   }
   else {
-    //abstract_db.connection.connect();
-    var query = abstract_db.mysql_select('DISTINCT(Ufind.idU),Ufind.nom,Ufind.tel,A.datetimeCrea,A.etat'
-    ,['Amis A','Utilisateur Ufind','Utilisateur Usearch']
-    ,'Usearch.tel = "'+req.body.tel+'" and (A.idU_snd = Usearch.idU and Ufind.idu = A.idU_rcv ) or (A.idU_rcv = Usearch.idU and Ufind.idu = A.idU_snd )','A.datetimeCrea ASC');
-    console.log(query);
-    //abstract_db.connection.connect();
+    var table = 'Message'
+    var query = abstract_db.mysql_insert(table,['valeur','tel_snd','tel_rcv'],['"'+req.body.valeur+'"','"'+req.body.tel_snd+'"','"'+req.body.tel_rcv+'"']);
     abstract_db.connection.query(query, function(err, result)
     {
-      console.log(err);
-      console.log(result);
-      if(err)
-      {
-        res.json({ success: false, message: 'Amis Utilisateur action failed', data: err });
-      }
-      else {
-        res.json({ success: true, message: 'Amis Utilisateur action suceeded', data: result });
-      }
+      res.json(commonHelper.result_json(err, result,'New '+table));
     });
   }
 });
@@ -75,9 +61,9 @@ moduleRoutes.post('/list', function(req, res)
   else {
     //abstract_db.connection.connect();
 
-    var query = abstract_db.mysql_select('DISTINCT(M.idMsg),M.valeur,M.etat,M.datetimeCrea , M.idU_snd , M.idU_rcv'
+    var query = abstract_db.mysql_select('DISTINCT(M.idMsg),M.valeur,M.etat,M.datetimeCrea , M.tel_snd , M.tel_rcv'
     ,['Message M','Utilisateur Usearch']
-    ,'Usearch.tel = "'+req.body.tel+'" and (M.idU_snd = Usearch.idU or M.idU_rcv = Usearch.idU)'
+    ,'M.tel_snd = "'+req.body.tel+'" or M.tel_rcv = "'+req.body.tel+'"'
     ,'M.datetimeCrea DESC');
     console.log(query);
     //abstract_db.connection.connect();
@@ -87,10 +73,10 @@ moduleRoutes.post('/list', function(req, res)
       console.log(result);
       if(err)
       {
-        res.json({ success: false, message: 'Amis Utilisateur action failed', data: err });
+        res.json({ success: false, message: 'Liste message Utilisateur action failed', data: err });
       }
       else {
-        res.json({ success: true, message: 'Amis Utilisateur action suceeded', data: result });
+        res.json({ success: true, message: 'Liste message Utilisateur action suceeded', data: result });
       }
     });
   }

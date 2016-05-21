@@ -10,18 +10,19 @@ var message = function()
   {
     var validationResponse = commonHelper.getValidationResponse();
     var HelperValidator = commonHelper.validator;
-    if(! HelperValidator.isAlphanumeric( req.body.nom )
+    console.log(req.body.tel_snd );
+    console.log(req.body.tel_rcv );
+    console.log(req.body.valeur );
+    if(! HelperValidator.isAlphanumeric( req.body.tel_snd )
         && req.body.firstName != "" ){
-        validationResponse.addError("Le nom doit être une chaine de characters Alphanumerique : " + req.body.nom);
+        validationResponse.addError("tel_snd : doit être une chaine de characters Alphanumerique : " + req.body.tel_snd);
     }
 
-    if(! (HelperValidator.isAlphanumeric( req.body.password)
-        && HelperValidator.isLength(req.body.password, {min: 5, max: 10}) ) ){
-        validationResponse.addError("Le password doit être une chaine de characters Alphanumerique entre (5 - 10) : " + req.body.password);
+    if(! (HelperValidator.isAlphanumeric( req.body.tel_rcv)) ){
+        validationResponse.addError("tel_rcv : doit être une chaine de characters Alphanumerique : " + req.body.tel_rcv);
     }
-    if(! HelperValidator.isAscii( req.body.tel)
-        && req.body.tel != "" ){
-        validationResponse.addError("Invalid tel: " + req.body.tel);
+    if(! req.body.valeur != "" ){
+        validationResponse.addError("valeur: ne doit pas être la chaine vide" + req.body.valeur);
     }
     return validationResponse.success;
   }
