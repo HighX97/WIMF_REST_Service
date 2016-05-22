@@ -1,0 +1,505 @@
+{
+	"id": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+	"name": "WIMF_NODE_SERVER",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "82925821-c69f-bbb6-021e-ced8ab770a2b",
+			"name": "Ami",
+			"description": "",
+			"order": [
+				"3cd520f8-9176-b372-fffc-e6f5a666a410",
+				"66177fd3-3d32-3e61-fb17-63bf19c69373",
+				"1e896951-af4c-4900-521a-50138a1fdf45",
+				"36233824-5e5f-3314-aadb-104abd467af2"
+			],
+			"owner": 0
+		},
+		{
+			"id": "dd807c14-b8bd-4cb7-64e0-c75ecffabf69",
+			"name": "Gps",
+			"description": "",
+			"order": [],
+			"owner": 0
+		},
+		{
+			"id": "8a1a0286-8b6f-b795-6cd7-01e9cc4f6be5",
+			"name": "Message",
+			"description": "",
+			"order": [
+				"5b53dbcc-0479-5f91-d9ce-6c68c2d73941",
+				"06a5e100-ce10-ee2a-eeab-7dbd3c2c02c3",
+				"a8447260-abdc-cd01-8a6d-04a61975b3b1",
+				"bd85bb6d-7b3f-5052-d76b-ce37b0816009",
+				"c68325e4-1828-f940-adf4-f6795e21967e"
+			],
+			"owner": 0
+		},
+		{
+			"id": "72f6eccc-6643-9475-79e4-09ed7a5885fe",
+			"name": "Utilisateur",
+			"description": "",
+			"order": [
+				"7ebd9294-72e0-ada7-52f7-5b78826c9950",
+				"8eeaf638-a580-5182-8e93-edd9d414faac",
+				"d9522089-b2a8-0780-b20c-6b314695c3fd",
+				"a02b7309-6d42-f5d2-8cf4-a84d8cda62df",
+				"de9d2692-dde2-73ec-25ce-4657c161b5f4",
+				"8a1d71db-b0dc-e920-a764-4580dbc15eb0"
+			],
+			"owner": 0
+		}
+	],
+	"timestamp": 1463597140270,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "06a5e100-ce10-ee2a-eeab-7dbd3c2c02c3",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/message/new",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "tel_snd",
+					"value": "0695504940",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "tel_rcv",
+					"value": "0753369827",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "valeur",
+					"value": "valeur",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463907124215,
+			"name": "new",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "1e896951-af4c-4900-521a-50138a1fdf45",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/ami/update_state",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "idU_snd",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "idU_rcv",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463911554938,
+			"name": "update_state",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "36233824-5e5f-3314-aadb-104abd467af2",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/ami/delete",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "idU_snd",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "idU_rcv",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463912765251,
+			"name": "delete",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "3cd520f8-9176-b372-fffc-e6f5a666a410",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/ami/list",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "tel",
+					"value": "0695504940",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463911602701,
+			"name": "list",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "5b53dbcc-0479-5f91-d9ce-6c68c2d73941",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/message/list",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "tel",
+					"value": "0695504940",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463907073507,
+			"name": "list",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "66177fd3-3d32-3e61-fb17-63bf19c69373",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/ami/new",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "idU_snd",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "idU_rcv",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463911586530,
+			"name": "new",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "7ebd9294-72e0-ada7-52f7-5b78826c9950",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/utilisateur/list",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463856333356,
+			"name": "list",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "8a1d71db-b0dc-e920-a764-4580dbc15eb0",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/utilisateur/connect",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "tel",
+					"value": "1234567896",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "password",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463856419653,
+			"name": "connect",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "8eeaf638-a580-5182-8e93-edd9d414faac",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/utilisateur/new",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "nom",
+					"value": "redoine",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "password",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "tel",
+					"value": "1234567897",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463856348351,
+			"name": "new",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "a02b7309-6d42-f5d2-8cf4-a84d8cda62df",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/utilisateur/update",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "nom",
+					"value": "mounir",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "password",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "tel",
+					"value": "1234567890",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463856387163,
+			"name": "update",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "a8447260-abdc-cd01-8a6d-04a61975b3b1",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/message/delete",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "idMsg",
+					"value": "38",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463907091189,
+			"name": "delete",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "bd85bb6d-7b3f-5052-d76b-ce37b0816009",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/message/update_state",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "idMsg",
+					"value": "51",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463907147063,
+			"name": "update_state",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "c68325e4-1828-f940-adf4-f6795e21967e",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/message/one",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"data": [
+				{
+					"key": "idMsg",
+					"value": "55",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "one",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1463903688078,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "8a1a0286-8b6f-b795-6cd7-01e9cc4f6be5"
+		},
+		{
+			"id": "d9522089-b2a8-0780-b20c-6b314695c3fd",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/utilisateur/one",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "tel",
+					"value": "1234567896",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463856391691,
+			"name": "one",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "de9d2692-dde2-73ec-25ce-4657c161b5f4",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/utilisateur/delete",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "tel",
+					"value": "1234567897",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463856400394,
+			"name": "delete",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		}
+	]
+}
