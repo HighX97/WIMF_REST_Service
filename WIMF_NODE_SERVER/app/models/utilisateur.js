@@ -6,6 +6,7 @@ var SHAREDDATA   = require('../helpers/data');
 var utilisateur = function()
 {
 
+  this.table = "Utilisateur";
   this.verify_body_new = function(req)
   {
     var validationResponse = commonHelper.getValidationResponse();

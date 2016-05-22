@@ -6,6 +6,7 @@ var SHAREDDATA   = require('../helpers/data');
 var message = function()
 {
 
+  this.table = "Message";
   this.verify_body_new = function(req)
   {
     var validationResponse = commonHelper.getValidationResponse();
