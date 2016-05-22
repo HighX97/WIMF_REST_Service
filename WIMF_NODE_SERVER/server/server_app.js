@@ -15,7 +15,7 @@ var config = require('./config'); // get our config file
 var UtilisateurController   = require('../app/controllers/utilisateur');
 var MessageController   = require('../app/controllers/message');
 var AmiController   = require('../app/controllers/ami');
-var GpsController   = require('../app/controllers/gps');
+//var GpsController   = require('../app/controllers/gps');
 
 var port = process.env.PORT || 8585;
 
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use('/utilisateur', UtilisateurController);
 app.use('/ami', AmiController);
 app.use('/message', MessageController);
-app.use('/gps', GpsController);
+//app.use('/gps', GpsController);
 
 app.use(morgan('dev'));
 
