@@ -29,12 +29,8 @@ moduleRoutes.get('/', function(req, res) {
 
 moduleRoutes.post('/new', function(req, res)
 {
-  console.log(req.body.tel_snd );
-  console.log(req.body.tel_rcv );
-  console.log(req.body.valeur );
-  console.log('---------------------');
-  var validationResponse = commonHelper.getValidationResponse();
-  if(! message.verify_body_new(req)){
+  var validationResponse = message.verify_body_new(req);
+  if(! validationResponse.success){
       res.json(validationResponse);
   }
   else {
@@ -44,6 +40,36 @@ moduleRoutes.post('/new', function(req, res)
       res.json(commonHelper.result_json(err, result,'New '+table));
     });
   }
+});
+
+moduleRoutes.post('/one', function(req, res)
+{
+  var validationResponse = message.verify_body_one(req);
+  if(! validationResponse.success){
+      res.json(validationResponse);
+  }
+  else {
+    var query = abstract_db.mysql_select('*',[table],'idMsg = '+req.body.idMsg,"");  
+    abstract_db.connection.query(query, function(err, result)
+  {
+    res.json(commonHelper.result_json(err, result,'New '+table));
+  });
+}
+});
+
+moduleRoutes.post('/update_state', function(req, res)
+{
+  var validationResponse = message.verify_body_one(req);
+  if(! validationResponse.success){
+      res.json(validationResponse);
+  }
+  else {
+  var query = abstract_db.mysql_update(table,['etat = 1','datetimeMaj=CURRENT_TIMESTAMP'],'idMsg = '+req.body.idMsg);
+  abstract_db.connection.query(query, function(err, result)
+  {
+    res.json(commonHelper.result_json(err, result,'New '+table));
+  });
+}
 });
 
 moduleRoutes.delete('/delete', function(req, res)
@@ -79,19 +105,12 @@ moduleRoutes.post('/list', function(req, res)
     ,['Message M','Utilisateur Usearch']
     ,'M.tel_snd = "'+req.body.tel+'" or M.tel_rcv = "'+req.body.tel+'"'
     ,'M.datetimeCrea DESC');
-    console.log(query);
     //abstract_db.connection.connect();
     abstract_db.connection.query(query, function(err, result)
     {
       console.log(err);
       console.log(result);
-      if(err)
-      {
-        res.json({ success: false, message: 'Liste message Utilisateur action failed', data: err });
-      }
-      else {
-        res.json({ success: true, message: 'Liste message Utilisateur action suceeded', data: result });
-      }
+      res.json(commonHelper.result_json(err, result,'Liste message Utilisateur'));
     });
   }
 });

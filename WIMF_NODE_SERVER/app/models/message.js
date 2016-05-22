@@ -24,7 +24,7 @@ var message = function()
     if(! req.body.valeur != "" ){
         validationResponse.addError("valeur: ne doit pas être la chaine vide" + req.body.valeur);
     }
-    return validationResponse.success;
+    return validationResponse;
   }
 
   this.verify_body_one = function(req)
@@ -32,12 +32,12 @@ var message = function()
     var validationResponse = commonHelper.getValidationResponse();
     var HelperValidator = commonHelper.validator;
     if(! HelperValidator.isNumeric( req.body.idMsg)
-        && req.body.tel != "" ){
+        && req.body.idMsg != "" ){
         validationResponse.addError("Invalid idMsg: " + req.body.idMsg);
     }
-    return validationResponse.success;
+    return validationResponse;
   }
-  
+
 }
 
 module.exports = new message();

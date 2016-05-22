@@ -44,13 +44,10 @@ moduleRoutes.post('/update', function(req, res)
   else {
     var abstract_db = require("../models/abstract_db");
     var query = abstract_db.mysql_update("Utilisateur",['nom = "'+req.body.nom+'"','password = "'+req.body.password+'"'],'tel = "'+req.body.tel+'"');
-    console.log(query);
-    //abstract_db.connection.connect();
     abstract_db.connection.query(query, function(err, result)
     {
       res.json(commonHelper.result_json(err, result,'Update Utilisateur'));
     });
-    //abstract_db.connection.end();
 }
 });
 
