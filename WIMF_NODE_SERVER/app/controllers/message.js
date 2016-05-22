@@ -24,8 +24,9 @@ var table = 'Message'
 //http://localhost:8081/user/
 //Valide
 moduleRoutes.get('/', function(req, res) {
-    res.json({ success: true, message: 'NONE Message action', data: req.decoded });
+    res.json({ success: true, message: message.table+'/', data: req.decoded });
 });
+
 
 moduleRoutes.post('/new', function(req, res)
 {
@@ -37,7 +38,7 @@ moduleRoutes.post('/new', function(req, res)
     var query = abstract_db.mysql_insert(table,['valeur','tel_snd','tel_rcv'],['"'+req.body.valeur+'"','"'+req.body.tel_snd+'"','"'+req.body.tel_rcv+'"']);
     abstract_db.connection.query(query, function(err, result)
     {
-      res.json(commonHelper.result_json(err, result,'New '+table));
+      res.json(commonHelper.result_json(err, result,message.table+'/new'));
     });
   }
 });
@@ -52,7 +53,7 @@ moduleRoutes.post('/one', function(req, res)
     var query = abstract_db.mysql_select('*',[table],'idMsg = '+req.body.idMsg,"");
     abstract_db.connection.query(query, function(err, result)
   {
-    res.json(commonHelper.result_json(err, result,'New '+table));
+    res.json(commonHelper.result_json(err, result,message.table+'/one'));
   });
 }
 });
@@ -67,7 +68,7 @@ moduleRoutes.post('/update_state', function(req, res)
   var query = abstract_db.mysql_update(table,['etat = 1','datetimeMaj=CURRENT_TIMESTAMP'],'idMsg = '+req.body.idMsg);
   abstract_db.connection.query(query, function(err, result)
   {
-    res.json(commonHelper.result_json(err, result,'New '+table));
+    res.json(commonHelper.result_json(err, result,message.table+'/update_state'));
   });
 }
 });
@@ -82,7 +83,7 @@ moduleRoutes.delete('/delete', function(req, res)
     var query = abstract_db.mysql_delete(table,'idMsg = "'+req.body.idMsg+'"');
     abstract_db.connection.query(query, function(err, result)
     {
-        res.json(commonHelper.result_json(err, result,'Delete '+table));
+        res.json(commonHelper.result_json(err, result,message.table+'/delete'));
     });
 }
 });
@@ -105,7 +106,7 @@ moduleRoutes.post('/list', function(req, res)
     {
       console.log(err);
       console.log(result);
-      res.json(commonHelper.result_json(err, result,'Liste message Utilisateur'));
+      res.json(commonHelper.result_json(err, result,message.table+'/list'));
     });
   }
 });

@@ -77,11 +77,11 @@ var commonHelper = function() {
 		console.log(msg);
 		if(err)
 		{
-			return { success: false, message: msg+' : action failed', data: err };
+			return { success: false, message: msg+' : failed', data: err };
 		}
 		else
 		{
-			return { success: true, message: msg+' : action suceeded', data: result };
+			return { success: true, message: msg+' : suceeded', data: result };
 		}
 	}
 

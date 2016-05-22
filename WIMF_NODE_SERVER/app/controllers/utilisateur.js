@@ -14,11 +14,10 @@ var utilisateur = require("../models/utilisateur");
 
 
 // ***** Methods
-
 //NONE
 moduleRoutes.get('/', function(req, res)
 {
-    res.json(commonHelper.result_json(err, result,'NONE Utilisateur '));
+    res.json(commonHelper.result_json(err, result,utilisateur.table+'/'));
 });
 
 moduleRoutes.post('/new', function(req, res)
@@ -30,7 +29,7 @@ moduleRoutes.post('/new', function(req, res)
     var query = abstract_db.mysql_insert('Utilisateur',['nom','tel','password'],['"'+req.body.nom+'"','"'+req.body.tel+'"','"'+req.body.password+'"']);
     abstract_db.connection.query(query, function(err, result)
     {
-      res.json(commonHelper.result_json(err, result,'New Utilisateur'));
+      res.json(commonHelper.result_json(err, result,utilisateur.table+'/new'));
     });
 }
 });
@@ -46,7 +45,7 @@ moduleRoutes.post('/update', function(req, res)
     var query = abstract_db.mysql_update("Utilisateur",['nom = "'+req.body.nom+'"','password = "'+req.body.password+'"'],'tel = "'+req.body.tel+'"');
     abstract_db.connection.query(query, function(err, result)
     {
-      res.json(commonHelper.result_json(err, result,'Update Utilisateur'));
+      res.json(commonHelper.result_json(err, result,utilisateur.table+'/update'));
     });
 }
 });
@@ -60,7 +59,7 @@ moduleRoutes.delete('/delete', function(req, res)
     var query = abstract_db.mysql_delete("Utilisateur",'tel = "'+req.body.tel+'"');
     abstract_db.connection.query(query, function(err, result)
     {
-        res.json(commonHelper.result_json(err, result,'Update Utilisateur'));
+        res.json(commonHelper.result_json(err, result,utilisateur.table+'/delete'));
     });
 }
 });
@@ -75,7 +74,7 @@ moduleRoutes.post('/one', function(req, res)
     var query = abstract_db.mysql_select("nom, tel, gps_lat, gps_long, datetimeMaj",["Utilisateur"],'tel="'+req.body.tel+'"',"");
     abstract_db.connection.query(query, function(err, result)
     {
-      res.json(commonHelper.result_json(err, result,'Utilisateur one action'));
+      res.json(commonHelper.result_json(err, result,utilisateur.table+'/one'));
     });
   }
 });
@@ -90,7 +89,7 @@ moduleRoutes.post('/connect', function(req, res)
     var query = abstract_db.mysql_select("*",["Utilisateur"],'tel="'+req.body.tel+'" AND password="'+req.body.password+'"',"");
     abstract_db.connection.query(query, function(err, result)
     {
-      res.json(commonHelper.result_json(err, result,'Utilisateur connect action'));
+      res.json(commonHelper.result_json(err, result,utilisateur.table+'/connect'));
     });
   }
 });
@@ -100,6 +99,6 @@ moduleRoutes.get('/list', function(req, res)
     var query = abstract_db.mysql_select("*",["Utilisateur"],"","");
     abstract_db.connection.query(query, function(err, result)
     {
-      res.json(commonHelper.result_json(err, result,'List Utilisateur'));
+      res.json(commonHelper.result_json(err, result,utilisateur.table+'/list'));
     });
 });
