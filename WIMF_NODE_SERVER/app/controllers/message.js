@@ -49,7 +49,7 @@ moduleRoutes.post('/one', function(req, res)
       res.json(validationResponse);
   }
   else {
-    var query = abstract_db.mysql_select('*',[table],'idMsg = '+req.body.idMsg,"");  
+    var query = abstract_db.mysql_select('*',[table],'idMsg = '+req.body.idMsg,"");
     abstract_db.connection.query(query, function(err, result)
   {
     res.json(commonHelper.result_json(err, result,'New '+table));
@@ -74,7 +74,8 @@ moduleRoutes.post('/update_state', function(req, res)
 
 moduleRoutes.delete('/delete', function(req, res)
 {
-  if(! message.verify_body_one(req)){
+  var validationResponse = message.verify_body_one(req)
+  if(! validationResponse.success){
       res.json(validationResponse);
   }
   else {
@@ -88,13 +89,7 @@ moduleRoutes.delete('/delete', function(req, res)
 
 moduleRoutes.post('/list', function(req, res)
 {
-  var validationResponse = commonHelper.getValidationResponse();
-  var HelperValidator = commonHelper.validator;
-  if(! HelperValidator.isAscii( req.body.tel)
-      && req.body.tel != "" ){
-      validationResponse.addError("Invalid tel: " + req.body.tel);
-  }
-
+  var validationResponse = message.verify_body_list(req)
   if(! validationResponse.success){
       res.json(validationResponse);
   }

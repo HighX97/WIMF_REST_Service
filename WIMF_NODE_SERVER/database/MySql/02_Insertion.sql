@@ -93,129 +93,121 @@ SELECT * FROM Amis
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",1,2)
+("Message","0695504940","0753369827")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",1,3)
+("Message","0695504940","0789654004")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",1,4)
+("Message","0695504940","0783573458")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",2,1)
+("Message","0753369827","0695504940")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",2,3)
+("Message","0753369827","0789654004")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",2,4)
+("Message","0753369827","0783573458")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",3,1)
+("Message","0789654004","0695504940")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",3,2)
+("Message","0789654004","0753369827")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",3,4)
+("Message","0789654004","0783573458")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",4,1)
+("Message","0783573458","0695504940")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",4,2)
+("Message","0783573458","0753369827")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",4,3)
+("Message","0783573458","0789654004")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",1,2)
+("Message","0695504940","0753369827")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",1,3)
+("Message","0695504940","0789654004")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",1,4)
+("Message","0695504940","0783573458")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",2,1)
+("Message","0753369827","0695504940")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",2,3)
+("Message","0753369827","0789654004")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",2,4)
+("Message","0753369827","0783573458")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",3,1)
+("Message","0789654004","0695504940")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",3,2)
+("Message","0789654004","0753369827")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",3,4)
+("Message","0789654004","0783573458")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",4,1)
+("Message","0783573458","0695504940")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",4,2)
+("Message","0783573458","0753369827")
 ;
 INSERT INTO Message
 (valeur,tel_snd,tel_rcv)
 VALUES
-("Message",4,3)
+("Message","0783573458","0789654004")
 ;
 SELECT * from Message;
-
-
-SET
-INSERT INTO Message
-(valeur,idU_snd,idU_rcv)
-VALUES
-("Message",3,4)
-;

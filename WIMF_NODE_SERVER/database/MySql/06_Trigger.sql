@@ -24,6 +24,24 @@ END;
 //
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER trigger_utilisateur_gps
+AFTER UPDATE
+ON Utilisateur
+FOR EACH ROW
+BEGIN
+  IF ((new.gps_lat != old.gps_lat OR new.gps_long != old.gps_long) AND new.gps_lat IS NOT NULL AND new.gps_long IS NOT NULL)
+  THEN
+  INSERT INTO Gps_utilisateur
+  (idU,gps_lat,gps_long,datetimeCrea)
+  VALUES
+  (new.idU,new.gps_lat,new.gps_long,CURRENT_TIMESTAMP)
+  ;
+  END IF;
+END;
+//
+DELIMITER ;
+
 SHOW TRIGGERS LIKE '%'\G
 /*
 @Author : lortole

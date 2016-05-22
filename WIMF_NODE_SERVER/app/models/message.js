@@ -38,6 +38,17 @@ var message = function()
     return validationResponse;
   }
 
+  this.verify_body_list = function(req)
+  {
+    var validationResponse = commonHelper.getValidationResponse();
+    var HelperValidator = commonHelper.validator;
+    if(! HelperValidator.isAlphanumeric( req.body.tel)
+        && req.body.idMsg != "" ){
+        validationResponse.addError("Invalid tel: " + req.body.tel);
+    }
+    return validationResponse;
+  }
+
 }
 
 module.exports = new message();
