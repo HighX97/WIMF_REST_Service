@@ -5,8 +5,8 @@ var abstract_db = function()
 
   this.connection = mysql.createConnection({
     host : 'localhost',
-    user : 'jimmy',
-    password : 'ikbal',
+    user : 'root',
+    password : 'password',
     database :  'db_wimf'
   })
 
@@ -14,6 +14,7 @@ var abstract_db = function()
   {
     var query = "DELETE FROM " + table + " ";
     query += "WHERE " + where;
+    console.log(new Date()+" : ");
     console.log(query);
     return query;
   }
@@ -32,6 +33,7 @@ var abstract_db = function()
       i++;
     }
     query += "WHERE " + where;
+    console.log(new Date()+" : ");
     console.log(query);
     return query;
   }
@@ -57,6 +59,7 @@ var abstract_db = function()
     {
       query += "ORDER BY " + orderby;
     }
+    console.log(new Date()+" : ");
     console.log(query);
     return query;
   }
@@ -101,6 +104,7 @@ var abstract_db = function()
       }
       i++;
     }
+    console.log(new Date()+" : ");
     console.log(query);
     return query;
   }
