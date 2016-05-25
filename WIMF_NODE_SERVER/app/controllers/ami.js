@@ -71,7 +71,7 @@ moduleRoutes.post('/list', function(req, res)
   }
   else {
     //abstract_db.connection.connect();
-    var query = abstract_db.mysql_select('DISTINCT(Ufind.idU),Ufind.nom,Ufind.tel,Ufibnd.datetimeMaj, A.etat,A.idU_snd,A.idU_snd, A.datetimeCrea as date_request, A.datetimeMaj date_response'
+    var query = abstract_db.mysql_select('DISTINCT(Ufind.idU),Ufind.nom,Ufind.tel,Ufind.gps_lat,Ufind.gps_long,Ufind.datetimeMaj, A.etat,A.idU_snd,A.idU_snd, A.datetimeCrea as date_request, A.datetimeMaj date_response'
     ,[ami.table+' A','Utilisateur Ufind','Utilisateur Usearch']
     ,'Usearch.tel = "'+req.body.tel+'" and ((A.idU_snd = Usearch.idU and Ufind.idu = A.idU_rcv ) or (A.idU_rcv = Usearch.idU and Ufind.idu = A.idU_snd ) and  Usearch.idU != Ufind.idU)','A.datetimeCrea ASC');
     console.log(query);
