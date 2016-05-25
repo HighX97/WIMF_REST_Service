@@ -271,7 +271,7 @@
 			"data": [
 				{
 					"key": "tel",
-					"value": "1234567896",
+					"value": "1234567890",
 					"type": "text",
 					"enabled": true
 				},
@@ -287,7 +287,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1463856419653,
+			"time": 1463938491510,
 			"name": "connect",
 			"description": "",
 			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
@@ -303,45 +303,7 @@
 			"data": [
 				{
 					"key": "nom",
-					"value": "redoine",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "password",
-					"value": "password",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "tel",
-					"value": "1234567897",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "urlencoded",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1463856348351,
-			"name": "new",
-			"description": "",
-			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
-			"responses": []
-		},
-		{
-			"id": "a02b7309-6d42-f5d2-8cf4-a84d8cda62df",
-			"headers": "",
-			"url": "http://46.101.40.23:8585/utilisateur/update",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "POST",
-			"data": [
-				{
-					"key": "nom",
-					"value": "mounir",
+					"value": "wimfUser",
 					"type": "text",
 					"enabled": true
 				},
@@ -363,7 +325,45 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1463856387163,
+			"time": 1463938002701,
+			"name": "new",
+			"description": "",
+			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
+			"responses": []
+		},
+		{
+			"id": "a02b7309-6d42-f5d2-8cf4-a84d8cda62df",
+			"headers": "",
+			"url": "http://46.101.40.23:8585/utilisateur/update",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "nom",
+					"value": "wimfUser",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "password",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "tel",
+					"value": "1234567890",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463938481628,
 			"name": "update",
 			"description": "",
 			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
@@ -459,7 +459,7 @@
 			"data": [
 				{
 					"key": "tel",
-					"value": "1234567896",
+					"value": "1234567890",
 					"type": "text",
 					"enabled": true
 				}
@@ -469,7 +469,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1463856391691,
+			"time": 1463938080322,
 			"name": "one",
 			"description": "",
 			"collectionId": "af88f170-8c65-64b7-5b19-2634fcd1fb66",
